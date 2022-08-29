@@ -1,0 +1,65 @@
+<ui:composition
+        template="../template/principalFreddy.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+
+    <ui:define name="titre">
+        #{bundle.cart}
+    </ui:define>
+
+
+
+    <ui:define name="main">
+
+
+        <h:form>
+            <h:dataTable class="table" value="#{panierBean.liste}" var="ligneDeCommande">
+
+                <h:column scope="row">
+
+                    <f:facet scope="col" class="md-1" name="header">Article</f:facet>
+                    #{ligneDeCommande.article.nom}
+
+                    <f:facet scope="col" class="md-1" name="header">Description</f:facet>
+                    #{ligneDeCommande.article.description}
+
+                    <f:facet scope="col" class="md-1" name="header">Prix unitaire</f:facet>
+                    #{ligneDeCommande.article.prix}€
+
+                    <f:facet scope="col" class="md-1" name="header">Prix total</f:facet>
+                    #{ligneDeCommande.total(ligneDeCommande)}€
+
+                    <f:facet scope="col" class="md-1" name="header">Diminuer quantité</f:facet>
+                    <h:commandButton class="btn btn-outline-danger" action="#{panierBean.minusLigneDeCommande(ligneDeCommande)}" value="- 1"/>
+
+                    <f:facet scope="col" class="md-1" name="quantity">Quantité</f:facet>
+                    <h:inputText value="#{ligneDeCommande.quantity}"></h:inputText>
+
+                    <f:facet scope="col" class="md-1" name="header">Augmenter quantité</f:facet>
+                    <h:commandButton class="btn btn-outline-danger" action="#{panierBean.plusLigneDeCommande(ligneDeCommande)}" value="+ 1"/>
+
+                    <f:facet scope="col" class="md-1" name="header">Retirer article</f:facet>
+                    <h:commandButton class="btn btn-outline-danger" action="#{panierBean.removeLigneDeCommande(ligneDeCommande)}" value="#{bundle.remove}"/>
+
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+        <h:outputText value="#{panierBean.prixTotal()}€"/>
+
+        <h:form>
+            <h:commandButton class="btn btn-outline-warning" action="#{panierBean.emptyCart()}" value="#{bundle.emptyCart}"/>
+        </h:form>
+
+    </ui:define>
+
+
+
+</ui:composition>
+

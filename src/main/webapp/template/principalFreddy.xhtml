@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html 
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <f:view> 
+        <h:head>
+        	<link rel="stylesheet" type="text/css"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+			<f:loadBundle var="bundle" basename="global"/>
+		</h:head>
+        <h:body>
+			<h1>#{bundle.greeting} </h1>
+            <header class="jumbotron text-center">
+            	<section class="container">
+            		<article class="row">
+            			<h1><ui:insert name="titre"/></h1>
+            		</article>
+            	</section>
+            </header>
+            <div class="container">
+            	<div class="row">
+		   			<nav class="navbar navbar-expand-lg bg-light">
+
+						<h:form class="container-fluid">
+
+							<h:commandLink class="nav-link" action="#{navBean.pageBis}" value="Index">
+								<f:param name="pageIdBis" value="index"/>
+							</h:commandLink>
+
+							<h:commandLink class="nav-link" action="#{navBean.pageBis}" value="Page1">
+								<f:param name="pageIdBis" value="page1"/>
+							</h:commandLink>
+
+							<h:commandLink class="nav-link" action="#{navBean.pageBis}" value="#{bundle.shop}">
+								<f:param name="pageIdBis" value="magasin"/>
+							</h:commandLink>
+
+							<h:commandLink class="nav-link" action="#{navBean.pageBis}" value="#{bundle.cart}">
+								<f:param name="pageIdBis" value="panier"/>
+							</h:commandLink>
+
+						</h:form>
+
+		   			</nav>
+	   			</div>
+	   			<div class="row">
+<!--	   				<aside class="col-md-4">-->
+<!--	   					PUB sur le côté-->
+<!--	   				-->
+<!--	   				</aside>-->
+		   			<main class="col-md-12">
+		   				<ui:insert name="main" />
+		   			</main>
+	   			</div>
+	   		</div>
+   			
+   			<footer class="jumbotron text-center">
+   				<div class="container">
+   					<div class="col-md-12">
+   						<h:outputText value="(c) M2i - formation JSF" />
+   					</div>
+   				</div>
+   			</footer>
+
+        </h:body>
+    </f:view>
+</html>

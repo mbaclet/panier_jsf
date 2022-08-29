@@ -1,0 +1,16 @@
+body{
+    background-color: #B5D0E0;
+}
+
+a{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    margin: 5px;
+    padding: 5px;
+}
+a:hover{
+    background-color: darkgray;
+}
